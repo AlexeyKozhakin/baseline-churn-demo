@@ -6,12 +6,22 @@ import os
 # Title
 st.title("🎮 Player Churn Prediction (Analytical Model)")
 
-# Display an image
-image_path = os.path.join("img", "churn_img.png")
-st.image(image_path, use_container_width=True, caption="Player Churn Analysis")
+# Layout: Image + QR Code side by side
+col1, col2 = st.columns([3, 1])
+
+with col1:
+    # Display main image
+    image_path = os.path.join("img", "churn_img.png")
+    st.image(image_path, use_container_width=True, caption="📊 Player Churn Analysis")
+
+with col2:
+    # Display QR Code with caption
+    qr_path = os.path.join("img", "qr_code.png")
+    st.image(qr_path, use_container_width=True)
+    st.markdown("📱 **Try it yourself!**\nScan the QR code to test the app.")
 
 # Input: Number of inactive days
-N = st.slider("📅 How many days has the player been inactive?", 1, 60, 7)
+N = st.slider("📅 How many days has the player been inactive?", 1, 30, 7)
 
 # Selection: Activity frequency
 rate_options = {
