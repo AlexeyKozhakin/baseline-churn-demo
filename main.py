@@ -45,7 +45,7 @@ def logistic_regression(N, R):
 prob_churn = logistic_regression(N, R)
 
 # Display result
-st.markdown(f"### 🔥 Churn Probability: **{prob_churn:.2%}**")
+st.markdown(f"### 🔥 Churn Probability: **{prob_churn:.0%}**")
 
 # Visualization of churn probability over N
 N_values = np.linspace(1, 30, 100)
