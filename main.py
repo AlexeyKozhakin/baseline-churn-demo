@@ -39,7 +39,7 @@ a, b = 1, 1  # Can be adjusted based on data
 
 # Analytical logistic regression function
 def logistic_regression(N, R):
-    return (1 - R) ** (30 - N)
+    return (1 - R/(1+N)**(2*(R-1/30))) ** (30 - N)
 
 # Calculate churn probability
 prob_churn = logistic_regression(N, R)
@@ -55,6 +55,7 @@ prob_values = [logistic_regression(n, R) for n in N_values]
 fig, ax = plt.subplots(figsize=(8, 5))
 ax.plot(N_values, prob_values, label="Churn Probability", color='red', linewidth=2)
 ax.scatter([N], [prob_churn], color='blue', s=100, label="Selected Value", edgecolors='black', zorder=3)
+ax.set_ylim(0,1.1)
 
 # Styling the graph
 ax.set_xlabel("Inactive Days", fontsize=12, fontweight='bold')
